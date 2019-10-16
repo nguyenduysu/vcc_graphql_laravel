@@ -30,11 +30,7 @@ class UserByIdQuery extends Query
             'id' => [
                 'name' => 'id',
                 'type' => Type::int(),
-                // 'rules' => ['required']
-            ],
-            'email' => [
-                'name' => 'email',
-                'type' => Type::string()
+                'rules' => ['required']
             ]
         ];
     }
