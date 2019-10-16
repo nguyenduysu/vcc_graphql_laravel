@@ -34,9 +34,9 @@ class AllUserQuery extends Query
     public function resolve($root, $args, $context, ResolveInfo $resolveInfo, Closure $getSelectFields)
     {
         /** @var SelectFields $fields */
-        // $fields = $getSelectFields();
-        // $select = $fields->getSelect();
-        // $with = $fields->getRelations();
+        $fields = $getSelectFields();
+        $select = $fields->getSelect();
+        $with = $fields->getRelations();
 
         // if (!$user = User::find($args['id'])) {
         //     throw new \Exception('Resource not found');

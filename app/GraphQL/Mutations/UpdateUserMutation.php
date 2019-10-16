@@ -59,9 +59,9 @@ class UpdateUserMutation extends Mutation
 
         // $user = new User;
         // $userProfile = new UserProfile;
-        $user = User::find($args['id'])->first();
-        // $user = DB::table('users')->where('id',$args['id'])->get();
-        // $userProfile = UserProfile::where('user_id', $args['id'])->get();
+        $user = User::find($args['id']);
+        
+        // $userProfile = UserProfile::where('user_id', $args['id'])->first();
 
         
         // if(!$args['name']) {
@@ -73,19 +73,19 @@ class UpdateUserMutation extends Mutation
         // if(!$args['first_name']) {
         //     $userProfile->first_name = $userProfile->first_name;
         // } else {
-        //     $userProfile->first_name = $args['first_name'];
+            // $userProfile->first_name = $args['first_name'];
         // }
 
         // if(!$args['last_name']) {
         //     $userProfile->last_name = $userProfile->last_name;
         // } else {
-        //     $userProfile->last_name = $args['last_name'];
+            // $userProfile->last_name = $args['last_name'];
         // }
 
         // if(!$args['avatar']) {
         //     $userProfile->avatar = $userProfile->avatar;
         // } else {
-        //     $userProfile->avatar = $userProfile['avatar'];
+            // $userProfile->avatar = $userProfile['avatar'];
         // }
 
         $user->save();

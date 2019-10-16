@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\GraphQL\Types;
 
+use App\ProductImage;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Facades\GraphQL;
 use Rebing\GraphQL\Support\Type as GraphQLType;
@@ -12,7 +13,8 @@ class ProductImagesType extends GraphQLType
 {
     protected $attributes = [
         'name' => 'ProductImages',
-        'description' => 'A type'
+        'description' => 'A type',
+        'model' => ProductImage::class
     ];
 
     public function fields(): array

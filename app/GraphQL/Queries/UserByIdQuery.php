@@ -29,8 +29,12 @@ class UserByIdQuery extends Query
         return [
             'id' => [
                 'name' => 'id',
-                'type' => Type::nonNull(Type::int()),
-                'rules' => ['required']
+                'type' => Type::int(),
+                // 'rules' => ['required']
+            ],
+            'email' => [
+                'name' => 'email',
+                'type' => Type::string()
             ]
         ];
     }
@@ -38,14 +42,33 @@ class UserByIdQuery extends Query
     public function resolve($root, $args, $context, ResolveInfo $resolveInfo, Closure $getSelectFields)
     {
         /** @var SelectFields $fields */
-        // $fields = $getSelectFields();
-        // $select = $fields->getSelect();
-        // $with = $fields->getRelations();
+        $fields = $getSelectFields();
+        $select = $fields->getSelect();
+        $with = $fields->getRelations();
 
         if (!$user = User::find($args['id'])) {
             throw new \Exception('Resource not found');
         }
 
         return $user;
+
+        // $where = function ($query) use ($args) {
+        //     if (isset($args['id'])) {
+        //         $query->where('id',$args['id']);
+        //     }
+
+        //     if (isset($args['email'])) {
+        //         $query->where('email',$args['email']);
+        //     }
+        // };
+        // $user = User::with(array_keys($fields->getRelations()))
+        //     ->where($where)
+        //     ->select($fields->getSelect())
+        //     ->paginate();
+        // return $user;
+    }
+
+    protected function resolveEmailField($root, $args) {
+        return strtolower($root->name);
     }
 }

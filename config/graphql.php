@@ -15,6 +15,7 @@ use App\GraphQL\Queries\AllProductImagesQuery;
 
 use App\GraphQL\Mutations\NewUserMutation;
 use App\GraphQL\Mutations\UpdateUserMutation;
+use App\GraphQL\Mutations\DeleteUserMutation;
 
 return [
     'prefix' => 'graphql',
@@ -40,7 +41,8 @@ return [
             ],
             'mutation' => [
                 'newUser' => NewUserMutation::class,
-                'updateUser' => UpdateUserMutation::class
+                'updateUser' => UpdateUserMutation::class,
+                'deleteUser' => DeleteUserMutation::class
             ],
             'middleware' => [],
             'method'     => ['get', 'post'],
